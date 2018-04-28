@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  api:
+    image: oltier/quality-stars-backend:latest
+    depends_on:
+      - mongo
+    tty: true
+
+  mongo:
+    image: mongo:3.0
+    command: "mongod"
+
