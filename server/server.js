@@ -2,6 +2,7 @@
 
 var loopback = require('loopback');
 var boot = require('loopback-boot');
+const morgan = require('morgan');
 
 var app = module.exports = loopback();
 
@@ -22,6 +23,8 @@ app.start = function() {
 // Sub-apps like REST API are mounted via boot scripts.
 boot(app, __dirname, function(err) {
   if (err) throw err;
+
+  app.use(morgan('combined'));
 
   // start the server if `$ node server.js`
   if (require.main === module)
